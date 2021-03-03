@@ -1,0 +1,61 @@
+<h3>Snack Trust</h3>
+<br />
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <label for="location">Location</label>
+      <select
+        name="location"
+        class="form-control"
+        (change)="onChangeLocation($event.target.value)"
+      >
+        <option value="">Select Location...</option>
+        <option
+          *ngFor="let location of locations"
+          [value]="location.locationId"
+        >
+          {{ location.locationName }}
+        </option>
+      </select>
+    </div>
+    <div class="col-sm-4">
+      <label for="machine">Machine</label>
+      <select
+        name="machine"
+        class="form-control"
+        (change)="onChangeMachine($event.target.value)"
+      >
+        <option value="">Select Machine...</option>
+        <option *ngFor="let machine of machines" [value]="machine.machineId">
+          {{ machine.machineName }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <br />
+  <div class="row" *ngIf="items">
+    <div class="col-md-10" style="margin-left: 0 !important; padding-left: 0">
+      <div class="row">
+        <app-vending-machine-item
+          class="card col-2 mb-2"
+          *ngFor="let item of items"
+          [vendingItem]="item"
+          style="
+            text-align: center;
+            width: 140px;
+            height: 240px;
+            margin-right: 5px;
+          "
+        >
+        </app-vending-machine-item>
+      </div>
+    </div>
+    <div class="col-md-2" style="padding: 0">
+      <app-transaction></app-transaction>
+    </div>
+  </div>
+  <!-- Coins div-->
+  <div class="row" *ngIf="items">
+    <app-coins-details></app-coins-details>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+.img-with-text {
+  text-align: justify;
+  width: [width of img];
+}
+
+.img-with-text img {
+  width: 25%;
+  height: 25%;
+}
+
+.btn-disabled,
+.btn-disabled[disabled] {
+  opacity: 0.4;
+  cursor: default !important;
+  pointer-events: none;
+}
+
+.card-columns {
+  column-count: 0 !important;
+}

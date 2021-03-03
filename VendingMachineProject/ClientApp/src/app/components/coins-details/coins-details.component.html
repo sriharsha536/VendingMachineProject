@@ -1,0 +1,6 @@
+
+<div class="btn-toolbar pull-right ">
+  <button class="btn btn-primary btn-sm mr-3"
+      type="button"
+      *ngFor="let d of denominators" (click)="coinInserted(d)">{{d.displayValue}}</button>
+</div>

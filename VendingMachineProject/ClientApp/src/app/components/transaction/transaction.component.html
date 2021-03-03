@@ -1,0 +1,67 @@
+<div>
+  <div class="row">
+    <div class="col-sm-10">
+      <span>Deposit</span>
+      <input
+        type="text"
+        value="{{ totalAmountDeposited }}"
+        class="form-control small"
+        readonly
+        style="width: 80px; float: right"
+      />
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-sm-10">
+      <span>Change</span>
+      <input
+        type="text"
+        value="{{ totalDispensed }}"
+        class="form-control small"
+        readonly
+        style="width: 80px; float: right"
+      />
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-md-6">
+      <button
+        class="btn btn-primary"
+        (click)="onBuyBtnClick()"
+        [disabled]="
+          itemSelected == null || totalAmountDeposited < itemSelected.amount
+        "
+      >
+        Buy
+      </button>
+    </div>
+    <div class="col-md-6">
+      <button
+        class="btn btn-primary"
+        (click)="onCancelBtnClick()"
+        [disabled]="totalAmountDeposited == 0"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+  <br />
+  <app-vending-machine-item
+    class="card"
+    [vendingItem]="itemSelected"
+    [displayCount]="displayCount"
+    *ngIf="itemSelected"
+    style="text-align: center"
+  >
+  </app-vending-machine-item>
+  <div class="row card col-12" *ngIf="totalDispensed > 0">
+    <p class="card-title" style="color: black">Change Dispensed</p>
+    <div class="card-body">
+      <p class="card-text" style="color: black" *ngFor="let item of coin">
+        {{ item.key }} : {{ item.value }}
+      </p>
+    </div>
+  </div>
+</div>

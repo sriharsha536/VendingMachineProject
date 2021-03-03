@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+code {
+  color: #e01a76;
+}
+
+/* You can add global styles to this file, and also import other style files */
+.btn-primary {
+  background-color: #ff3547;
+  border-color: #ff3547;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  background-color: #ff3547;
+  border-color: #ff3547;
+}
+
+.card-text {
+  color: black;
+}
