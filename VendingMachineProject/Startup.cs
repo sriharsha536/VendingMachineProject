@@ -51,7 +51,7 @@ namespace VendingMachineProject
             .AddJsonOptions(options => options.JsonSerializerOptions.IgnoreNullValues = true);
 
             services.AddDbContext<VendingDbContext>();
-            services.AddScoped<IVendingMachineService, VendingMachineService>();
+            services.AddSingleton<IVendingMachineService, VendingMachineService>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
