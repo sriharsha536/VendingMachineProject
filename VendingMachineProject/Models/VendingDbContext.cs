@@ -78,9 +78,6 @@ namespace VendingMachineProject.Models
                 entity.HasKey(e => new { e.MachineId, e.ItemId })
                     .HasName("PK__MachineI__E3C9B300FBAA0465");
 
-                entity.HasIndex(e => new { e.MachineId, e.ItemId }, "UC_MachineItemDetail")
-                    .IsUnique();
-
                 entity.HasOne(d => d.Item)
                     .WithMany(p => p.MachineItemDetails)
                     .HasForeignKey(d => d.ItemId)
