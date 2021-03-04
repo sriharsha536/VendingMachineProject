@@ -45,13 +45,14 @@ namespace VendingMachineProject
             services.AddCors();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            services.AddControllers(options => {
+            services.AddControllers(options =>
+            {
                 options.FormatterMappings.SetMediaTypeMappingForFormat("text/html", new MediaTypeHeaderValue("application/json"));
             })
             .AddJsonOptions(options => options.JsonSerializerOptions.IgnoreNullValues = true);
 
             services.AddDbContext<VendingDbContext>();
-            services.AddSingleton<IVendingMachineService, VendingMachineService>();
+            services.AddScoped<IVendingMachineService, VendingMachineService>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -81,8 +82,8 @@ namespace VendingMachineProject
                     }
                 });
 
-                 // Set the comments path for the Swagger JSON and UI.
-                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
@@ -108,7 +109,7 @@ namespace VendingMachineProject
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            
+
             if (!env.IsDevelopment())
             {
                 app.UseSpaStaticFiles();
@@ -146,7 +147,7 @@ namespace VendingMachineProject
                 }
             });
 
-            
+
         }
     }
 }
